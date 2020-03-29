@@ -1,6 +1,7 @@
 package lexer
 
 import (
+	"fmt"
 	"testing"
 
 	"monkey/token"
@@ -23,6 +24,9 @@ if (5 < 10) {
 } else {
 	return false;
 }
+
+10 == 10;
+10 != 9;
 `
 
 	tests := []struct {
@@ -76,23 +80,31 @@ if (5 < 10) {
 		{token.RT, ">"},
 		{token.INT, "5"},
 		{token.SEMICOLON, ";"},
-		// {token.INT, "10"},
-		// {token.EQ, "=="},
-		// {token.INT, "10"},
-		// {token.SEMICOLON, ";"},
-		// {token.INT, "10"},
-		// {token.NOT_EQ, "!="},
-		// {token.INT, "9"},
-		// {token.SEMICOLON, ";"},
-		// {token.EOF, ""},
+		// add tokens for this 
+		// if (5 < 10) {
+		// 	return true;
+		// } else {
+		// 	return false;
+		// }
+		{token.INT, "10"},
+		{token.EQ, "=="},
+		{token.INT, "10"},
+		{token.SEMICOLON, ";"},
+		{token.INT, "10"},
+		{token.NOT_EQ, "!="},
+		{token.INT, "9"},
+		{token.SEMICOLON, ";"},
+		{token.EOF, ""},
 	}
 
 	l := New(input)
 
 	for i, tt := range tests {
 		tok := l.NextToken()
+		fmt.Println("Token ", tok.Literal)
 
 		if tok.Type != tt.expectedType {
+			fmt.Println("Hello World!", tok.Literal)
 			t.Fatalf("tests[%d] - tokentype wrong. expected=%q, got %q",
 				i, tt.expectedType, tok.Type)
 		}

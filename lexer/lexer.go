@@ -1,6 +1,9 @@
 package lexer
 
-import "monkey/token"
+import (
+	"fmt"
+	"monkey/token"
+)
 
 type Lexer struct {
 	input string
@@ -22,11 +25,29 @@ func (l *Lexer) NextToken() token.Token {
 
 	switch l.ch {
 	case '=':
-		tok = newToken(token.ASSIGN, l.ch)
+		fmt.Println("THe current character is ", l.ch, " and the peek is ", l.peekChar())
+		// Stopping here. For some reason it thinks the next character is an "="
+		// I should lok at the previous character
+		if l.peekChar() == '=' {
+			fmt.Println("Am I inside")
+			ch := l.ch
+			l.readChar()
+			literal := string(ch) + string(l.ch)
+			tok = token.Token{Type: token.EQ, Literal: literal}
+		} else {
+			tok = newToken(token.ASSIGN, l.ch)
+		}
 	case '-':
 		tok = newToken(token.MINUS, l.ch)
 	case '!':
-		tok = newToken(token.BANG, l.ch)
+		if l.peekChar() == '=' {
+			ch := l.ch
+			l.readChar()
+			literal := string(ch) + string(l.ch)
+			tok = token.Token{Type: token.NOT_EQ, Literal: literal}
+		} else {
+			tok = newToken(token.BANG, l.ch)
+		}
 	case '/':
 		tok = newToken(token.SLASH, l.ch)
 	case '*':
@@ -65,6 +86,7 @@ func (l *Lexer) NextToken() token.Token {
 			tok = newToken(token.ILLEGAL, l.ch)
 		}
 	}
+
 	l.readChar()
 	return tok
 }
@@ -129,6 +151,6 @@ func (l *Lexer) peekChar() byte {
 	if l.readPosition >= len(l.input) {
 		return 0
 	} else {
-		return l.input[l.position]
+		return l.input[l.readPosition]
 	}
 }
