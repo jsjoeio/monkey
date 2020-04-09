@@ -1,7 +1,6 @@
 package lexer
 
 import (
-	"fmt"
 	"monkey/token"
 )
 
@@ -25,11 +24,7 @@ func (l *Lexer) NextToken() token.Token {
 
 	switch l.ch {
 	case '=':
-		fmt.Println("THe current character is ", l.ch, " and the peek is ", l.peekChar())
-		// Stopping here. For some reason it thinks the next character is an "="
-		// I should lok at the previous character
 		if l.peekChar() == '=' {
-			fmt.Println("Am I inside")
 			ch := l.ch
 			l.readChar()
 			literal := string(ch) + string(l.ch)
