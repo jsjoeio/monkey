@@ -434,6 +434,6 @@ func TestBuiltinFunctions(t *testing.T) {
 		// 	for i, expectedElem := range expected {
 		// 		testIntegerObject(t, array.Elements[i], int64(expectedElem))
 		// 	}
-		// }
+		}
 	}
 }
