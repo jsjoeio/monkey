@@ -27,7 +27,6 @@ func (e *Environment) Set(name string, val Object) Object {
 	return val
 }
 
-
 func NewEnclosedEnvironment(outer *Environment) *Environment {
 	env := NewEnvironment()
 	env.outer = outer

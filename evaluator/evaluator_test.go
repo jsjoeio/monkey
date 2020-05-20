@@ -9,7 +9,7 @@ import (
 
 func TestEvalIntegerExpression(t *testing.T) {
 	tests := []struct {
-		input string
+		input    string
 		expected int64
 	}{
 		{"5", 5},
@@ -60,7 +60,7 @@ func testIntegerObject(t *testing.T, obj object.Object, expected int64) bool {
 
 func TestEvalBooleanExpression(t *testing.T) {
 	tests := []struct {
-		input string
+		input    string
 		expected bool
 	}{
 		{"true", true},
@@ -105,7 +105,7 @@ func testBooleanObject(t *testing.T, obj object.Object, expected bool) bool {
 
 func TestBangOperator(t *testing.T) {
 	tests := []struct {
-		input string
+		input    string
 		expected bool
 	}{
 		{"!true", false},
@@ -124,7 +124,7 @@ func TestBangOperator(t *testing.T) {
 
 func TestIfElseExpressions(t *testing.T) {
 	tests := []struct {
-		input string
+		input    string
 		expected interface{}
 	}{
 		{"if (true) { 10 }", 10},
@@ -168,25 +168,25 @@ if (10 > 1) {
 `,
 			10,
 		},
-// 		{
-// 			`
-// let f = fn(x) {
-//   return x;
-//   x + 10;
-// };
-// f(10);`,
-// 			10,
-// 		},
-// 		{
-// 			`
-// let f = fn(x) {
-//    let result = x + 10;
-//    return result;
-//    return 10;
-// };
-// f(10);`,
-// 			20,
-// 		},
+		// 		{
+		// 			`
+		// let f = fn(x) {
+		//   return x;
+		//   x + 10;
+		// };
+		// f(10);`,
+		// 			10,
+		// 		},
+		// 		{
+		// 			`
+		// let f = fn(x) {
+		//    let result = x + 10;
+		//    return result;
+		//    return 10;
+		// };
+		// f(10);`,
+		// 			20,
+		// 		},
 	}
 
 	for _, tt := range tests {
@@ -422,22 +422,22 @@ func TestBuiltinFunctions(t *testing.T) {
 				t.Errorf("wrong error message. expected=%q, got=%q",
 					expected, errObj.Message)
 			}
-		// case []int:
-		// 	array, ok := evaluated.(*object.Array)
-		// 	if !ok {
-		// 		t.Errorf("obj not Array. got=%T (%+v)", evaluated, evaluated)
-		// 		continue
-		// 	}
+			// case []int:
+			// 	array, ok := evaluated.(*object.Array)
+			// 	if !ok {
+			// 		t.Errorf("obj not Array. got=%T (%+v)", evaluated, evaluated)
+			// 		continue
+			// 	}
 
-		// 	if len(array.Elements) != len(expected) {
-		// 		t.Errorf("wrong num of elements. want=%d, got=%d",
-		// 			len(expected), len(array.Elements))
-		// 		continue
-		// 	}
+			// 	if len(array.Elements) != len(expected) {
+			// 		t.Errorf("wrong num of elements. want=%d, got=%d",
+			// 			len(expected), len(array.Elements))
+			// 		continue
+			// 	}
 
-		// 	for i, expectedElem := range expected {
-		// 		testIntegerObject(t, array.Elements[i], int64(expectedElem))
-		// 	}
+			// 	for i, expectedElem := range expected {
+			// 		testIntegerObject(t, array.Elements[i], int64(expectedElem))
+			// 	}
 		}
 	}
 }

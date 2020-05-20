@@ -3,63 +3,63 @@ package token
 type TokenType string
 
 type Token struct {
-	Type TokenType
+	Type    TokenType
 	Literal string
 }
 
 const (
-		ILLEGAL = "ILLEGAL"
-		EOF = "EOF"
+	ILLEGAL = "ILLEGAL"
+	EOF     = "EOF"
 
-		// Identifers + literals
-		IDENT = "IDENT" // add, helloWorld, convertThing, x, y
-		INT = "INT" // 14324
+	// Identifers + literals
+	IDENT = "IDENT" // add, helloWorld, convertThing, x, y
+	INT   = "INT"   // 14324
 
-		// Operators
-		ASSIGN = "="
-		PLUS = "+"
-		MINUS = "-"
-		BANG = "!"
-		ASTERISK = "*"
-		SLASH = "/"
+	// Operators
+	ASSIGN   = "="
+	PLUS     = "+"
+	MINUS    = "-"
+	BANG     = "!"
+	ASTERISK = "*"
+	SLASH    = "/"
 
-		LT = "<"
-		GT = ">"
+	LT = "<"
+	GT = ">"
 
-		// Delimiters
-		COMMA = ","
-		SEMICOLON = ";"
-		LPAREN = "("
-		RPAREN = ")"
-		LBRACE = "{"
-		RBRACE = "}"
+	// Delimiters
+	COMMA     = ","
+	SEMICOLON = ";"
+	LPAREN    = "("
+	RPAREN    = ")"
+	LBRACE    = "{"
+	RBRACE    = "}"
 
-		// Keywords
-		FUNCTION = "FUNCTION"
-		LET = "LET"
-		TRUE = "TRUE"
-		FALSE = "FALSE"
-		IF = "IF"
-		ELSE = "ELSE"
-		RETURN = "RETURN"
+	// Keywords
+	FUNCTION = "FUNCTION"
+	LET      = "LET"
+	TRUE     = "TRUE"
+	FALSE    = "FALSE"
+	IF       = "IF"
+	ELSE     = "ELSE"
+	RETURN   = "RETURN"
 
-		EQ = "=="
-		NOT_EQ = "!="
+	EQ     = "=="
+	NOT_EQ = "!="
 
-		STRING = "STRING"
+	STRING = "STRING"
 
-		LBRACKET = "["
-		RBRACKET = "]"
-		COLON = ":"
+	LBRACKET = "["
+	RBRACKET = "]"
+	COLON    = ":"
 )
 
 var keywords = map[string]TokenType{
-	"fn": FUNCTION,
-	"let": LET,
-	"true": TRUE,
-	"false": FALSE,
-	"if": IF,
-	"else": ELSE,
+	"fn":     FUNCTION,
+	"let":    LET,
+	"true":   TRUE,
+	"false":  FALSE,
+	"if":     IF,
+	"else":   ELSE,
 	"return": RETURN,
 }
 

@@ -144,7 +144,7 @@ func TestIdentifierExpression(t *testing.T) {
 }
 
 func TestIntegerLiteralExpression(t *testing.T) {
-	input := "5";
+	input := "5"
 
 	l := lexer.New(input)
 	p := New(l)
@@ -173,10 +173,10 @@ func TestIntegerLiteralExpression(t *testing.T) {
 
 func TestParsingPrefixExpressions(t *testing.T) {
 	prefixTests := []struct {
-		input string
-		operator string
+		input        string
+		operator     string
 		integerValue int64
-	} {
+	}{
 		{"!5;", "!", 5},
 		{"-15", "-", 15},
 	}
@@ -229,10 +229,10 @@ func testIntegerLiteral(t *testing.T, il ast.Expression, value int64) bool {
 }
 
 func TestParsingInfixExpressions(t *testing.T) {
-	infixTests :=[]struct {
-		input string
-		leftValue interface{}
-		operator string
+	infixTests := []struct {
+		input      string
+		leftValue  interface{}
+		operator   string
 		rightValue interface{}
 	}{
 		{"5 + 5", 5, "+", 5},
@@ -297,7 +297,7 @@ func testLiteralExpression(
 	exp ast.Expression,
 	expected interface{},
 ) bool {
-	switch v:= expected.(type) {
+	switch v := expected.(type) {
 	case int:
 		return testIntegerLiteral(t, exp, int64(v))
 	case int64:
@@ -847,7 +847,6 @@ func TestParsingHashLiteralsStringKeys(t *testing.T) {
 		"two":   2,
 		"three": 3,
 	}
-
 
 	for key, value := range hash.Pairs {
 		literal, ok := key.(*ast.StringLiteral)
